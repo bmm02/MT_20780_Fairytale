@@ -1,1 +1,130 @@
-//Insert code here
+#include <Servo.h>
+Servo LWall;
+Servo RWall;
+Servo Paper;
+Servo Calcifer;
+
+int LWallPin = 9;
+int RWallPin = 8;
+int PaperPin = 7;
+int CalciferPin = 6;
+//Button A activates LED behind door for Howl
+const int buttonAPin=1;
+int buttonAState=0;
+int lastButtonAState=0;
+bool A=false;
+
+//button B activates Calcifer turning 
+const int buttonBPin=2;
+int buttonBState=0;
+int lastButtonBState=0;
+bool B=false;
+
+//button C activates servo for falling paper
+const int buttonCPin=3;
+int buttonCState=0;
+int lastButtonCState=0;
+bool C=false;
+
+//button D activates left wall turning
+const int buttonDPin=4;
+int buttonDState=0;
+int lastButtonDState=0;
+bool D=false;
+
+//button E activates right wall turning
+const int buttonEPin=5;
+int buttonEState=0;
+int lastButtonEState=0;
+bool E=false;
+
+//ADD IN LED PINS 
+
+
+void setup() {
+  pinMode(buttonAPin,INPUT);
+  pinMode(buttonBPin,INPUT);
+  pinMode(buttonCPin,INPUT);
+  pinMode(buttonDPin,INPUT);
+  pinMode(buttonEPin,INPUT);
+  LWall.attach(LWallPin);
+  pinMode(LWallPin,INPUT);
+  RWall.attach(RWallPin);
+  pinMode(RWallPin,INPUT);
+  Paper.attach(PaperPin);
+  pinMode(PaperPin,INPUT);
+  Calcifer.attach(CalciferPin);
+  pinMode(CalciferPin,INPUT);
+  Serial.begin(9600);
+  Serial.println("Start Part A")
+}
+
+void loop() {
+buttonAState= digitalRead(buttonAPin);
+
+if (buttonAState != lastButtonAState) {
+  if (buttonAState==HIGH) {
+    A=true;
+    //CODE FOR LED
+    Serial.println("Start Part B")
+  }
+}
+if (A ==true) {
+buttonBState= digitalRead(buttonBPin);
+if(buttonBState !=lastButtonBState){
+if (buttonBState==HIGH){
+B=true;
+//SERVO CODE FOR CALCIFER
+}
+}
+}
+if (B ==true) {
+buttonCState= digitalRead(buttonCPin);
+if(buttonCState !=lastButtonCState){
+if (buttonCState==HIGH){
+C=true;
+//SERVO CODE FOR PAPER
+}
+}
+}
+if (C ==true) {
+buttonDState= digitalRead(buttonDPin);
+if(buttonDState !=lastButtonDState){
+if (buttonDState==HIGH){
+D=true;
+//SERVO CODE FOR LEFT WALL
+}
+}
+}
+if (D ==true) {
+buttonEState= digitalRead(buttonEPin);
+if(buttonEState !=lastButtonEState){
+if (buttonEState==HIGH){
+E=true;
+//SERVO CODE FOR RIGHT WALL
+}
+}
+}
+if (E==true) {
+  Serial.println("The End!")
+}
+lastButtonAState= buttonAState;
+lastButtonBState= buttonBState;
+lastButtonCState= buttonCState;
+lastButtonDState= buttonDState;
+lastButtonEState= buttonEState;
+}
+
+
+//for some servo coding to implement later
+/*if (digitalRead(LWallPin)==HIGH){
+LWall.write(90);
+}else{
+LWall.write(0)
+}
+if (digitalRead(RWallPin)==HIGH){
+RWall.write(90);
+}else{
+RWall.write(0)
+}
+} */
