@@ -8,7 +8,7 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
-//Button A activates LED behind door for Howl
+//Button A activates LED behind door for Howl   //should our buttons be different colors? or have patterns relating to the action?
 const int buttonAPin=1;
 int buttonAState=0;
 int lastButtonAState=0;
