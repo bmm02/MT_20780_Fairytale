@@ -45,6 +45,7 @@ void setup() {
   pinMode(buttonCPin,INPUT);
   pinMode(buttonDPin,INPUT);
   pinMode(buttonEPin,INPUT);
+pinMode(LedPin, OUTPUT);
   LWall.attach(LWallPin);
   pinMode(LWallPin,INPUT);
   RWall.attach(RWallPin);
