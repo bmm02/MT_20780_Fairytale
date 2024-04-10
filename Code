@@ -8,6 +8,7 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
+int LedPin= 5;
 
 //Button A activates LED behind door for Howl
 
