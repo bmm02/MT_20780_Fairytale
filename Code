@@ -75,6 +75,7 @@ buttonBState= digitalRead(buttonBPin);
 if(buttonBState !=lastButtonBState){
 if (buttonBState==HIGH){
 B=true;
+digitalWrite(LedPin, LOW);
 //SERVO CODE FOR CALCIFER
 if (digitalRead(CalciferPin)==HIGH){
 Calcifer.write(90); //Calcifer turns bigger
