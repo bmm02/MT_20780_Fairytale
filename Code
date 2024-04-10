@@ -8,35 +8,33 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
-//Button A activates LED behind door for Howl   //should our buttons be different colors? or have patterns relating to the action?
+
+//Button A activates LED behind door for Howl
+
 const int buttonAPin=1;
 int buttonAState=0;
 int lastButtonAState=0;
 bool A=false;
 
-//button B activates Calcifer turning 
+//button B activates Calcifer turning and paper falling
 const int buttonBPin=2;
 int buttonBState=0;
 int lastButtonBState=0;
 bool B=false;
 
-//button C activates servo for falling paper
+//button C activates servo for left wall paper
 const int buttonCPin=3;
 int buttonCState=0;
 int lastButtonCState=0;
 bool C=false;
 
-//button D activates left wall turning
+//button D activates right wall turning
 const int buttonDPin=4;
 int buttonDState=0;
 int lastButtonDState=0;
 bool D=false;
 
-//button E activates right wall turning
-const int buttonEPin=5;
-int buttonEState=0;
-int lastButtonEState=0;
-bool E=false;
+
 
 //ADD IN LED PINS 
 
@@ -62,28 +60,45 @@ void setup() {
 void loop() {
 buttonAState= digitalRead(buttonAPin);
 
-if (buttonAState != lastButtonAState) {
-  if (buttonAState==HIGH) {
+if (buttonAState != lastButtonAState) { 
+  if (buttonAState==HIGH) {  //Chalk is placed, Led behind door activates
     A=true;
     //CODE FOR LED
     Serial.println("Start Part B")
   }
 }
-if (A ==true) {
+if (A ==true) { //Howl is placed, activates Cal and paper
 buttonBState= digitalRead(buttonBPin);
 if(buttonBState !=lastButtonBState){
 if (buttonBState==HIGH){
 B=true;
 //SERVO CODE FOR CALCIFER
+if (digitalRead(CalciferPin)==HIGH){
+Calcifer.write(90); //Calcifer turns bigger
+}else{
+Calcifer.write(0)
+}
+//SERVO CODE FOR PAPER
+if (digitalRead(PaperPin)==HIGH){
+Paper.write(90);
+}else{
+Paper.write(0)
 }
 }
 }
+}
+
 if (B ==true) {
 buttonCState= digitalRead(buttonCPin);
 if(buttonCState !=lastButtonCState){
 if (buttonCState==HIGH){
 C=true;
-//SERVO CODE FOR PAPER
+//SERVO CODE FOR LEFT WALL
+if (digitalRead(LWallPin)==HIGH){
+LWall.write(90);
+}else{
+LWall.write(0)
+}
 }
 }
 }
@@ -92,6 +107,8 @@ buttonDState= digitalRead(buttonDPin);
 if(buttonDState !=lastButtonDState){
 if (buttonDState==HIGH){
 D=true;
+
+
 //SERVO CODE FOR LEFT WALL
 (digitalRead(LWallPin)==HIGH){
 LWall.write(90);
@@ -106,18 +123,23 @@ buttonEState= digitalRead(buttonEPin);
 if(buttonEState !=lastButtonEState){
 if (buttonEState==HIGH){
 E=true;
+
 //SERVO CODE FOR RIGHT WALL
+if (digitalRead(RWallPin)==HIGH){
+RWall.write(90);
+}else{
+RWall.write(0)
 }
 }
 }
-if (E==true) {
+}
+if (D==true) {
   Serial.println("The End!")
 }
 lastButtonAState= buttonAState;
 lastButtonBState= buttonBState;
 lastButtonCState= buttonCState;
 lastButtonDState= buttonDState;
-lastButtonEState= buttonEState;
 }
 
 
