@@ -66,6 +66,7 @@ if (buttonAState != lastButtonAState) {
   if (buttonAState==HIGH) {  //Chalk is placed, Led behind door activates
     A=true;
     //CODE FOR LED
+digitalWrite(LedPin, HIGH);
     Serial.println("Start Part B")
   }
 }
