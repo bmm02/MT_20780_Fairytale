@@ -93,6 +93,11 @@ if(buttonDState !=lastButtonDState){
 if (buttonDState==HIGH){
 D=true;
 //SERVO CODE FOR LEFT WALL
+(digitalRead(LWallPin)==HIGH){
+LWall.write(90);
+}else{
+LWall.write(0)
+}
 }
 }
 }
