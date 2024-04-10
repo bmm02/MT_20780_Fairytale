@@ -8,35 +8,33 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
+
+
 //Button A activates LED behind door for Howl
 const int buttonAPin=1;
 int buttonAState=0;
 int lastButtonAState=0;
 bool A=false;
 
-//button B activates Calcifer turning 
+//button B activates Calcifer turning and paper falling
 const int buttonBPin=2;
 int buttonBState=0;
 int lastButtonBState=0;
 bool B=false;
 
-//button C activates servo for falling paper
+//button C activates servo for left wall paper
 const int buttonCPin=3;
 int buttonCState=0;
 int lastButtonCState=0;
 bool C=false;
 
-//button D activates left wall turning
+//button D activates right wall turning
 const int buttonDPin=4;
 int buttonDState=0;
 int lastButtonDState=0;
 bool D=false;
 
-//button E activates right wall turning
-const int buttonEPin=5;
-int buttonEState=0;
-int lastButtonEState=0;
-bool E=false;
+
 
 //ADD IN LED PINS 
 
