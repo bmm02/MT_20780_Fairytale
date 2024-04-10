@@ -9,8 +9,8 @@ int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
 
-
 //Button A activates LED behind door for Howl
+
 const int buttonAPin=1;
 int buttonAState=0;
 int lastButtonAState=0;
@@ -107,6 +107,23 @@ buttonDState= digitalRead(buttonDPin);
 if(buttonDState !=lastButtonDState){
 if (buttonDState==HIGH){
 D=true;
+
+
+//SERVO CODE FOR LEFT WALL
+(digitalRead(LWallPin)==HIGH){
+LWall.write(90);
+}else{
+LWall.write(0)
+}
+}
+}
+}
+if (D ==true) {
+buttonEState= digitalRead(buttonEPin);
+if(buttonEState !=lastButtonEState){
+if (buttonEState==HIGH){
+E=true;
+
 //SERVO CODE FOR RIGHT WALL
 if (digitalRead(RWallPin)==HIGH){
 RWall.write(90);
