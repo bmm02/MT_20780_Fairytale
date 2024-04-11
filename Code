@@ -80,13 +80,13 @@ digitalWrite(LedPin, LOW);
 if (digitalRead(CalciferPin)==HIGH){
 Calcifer.write(90); //Calcifer turns bigger
 }else{
-Calcifer.write(0)
+Calcifer.write(0);
 }
 //SERVO CODE FOR PAPER
 if (digitalRead(PaperPin)==HIGH){
 Paper.write(90);
 }else{
-Paper.write(0)
+Paper.write(0);
 }
 }
 }
@@ -101,7 +101,7 @@ C=true;
 if (digitalRead(LWallPin)==HIGH){
 LWall.write(90);
 }else{
-LWall.write(0)
+LWall.write(0);
 }
 }
 }
@@ -117,7 +117,7 @@ D=true;
 (digitalRead(LWallPin)==HIGH){
 LWall.write(90);
 }else{
-LWall.write(0)
+LWall.write(0);
 }
 }
 }
@@ -132,13 +132,13 @@ E=true;
 if (digitalRead(RWallPin)==HIGH){
 RWall.write(90);
 }else{
-RWall.write(0)
+RWall.write(0);
 }
 }
 }
 }
 if (D==true) {
-  Serial.println("The End!")
+  Serial.println("The End!");
 }
 lastButtonAState= buttonAState;
 lastButtonBState= buttonBState;
@@ -151,11 +151,11 @@ lastButtonDState= buttonDState;
 /*if (digitalRead(LWallPin)==HIGH){
 LWall.write(90);
 }else{
-LWall.write(0)
+LWall.write(0);
 }
 if (digitalRead(RWallPin)==HIGH){
 RWall.write(90);
 }else{
-RWall.write(0)
+RWall.write(0);
 }
 } */
