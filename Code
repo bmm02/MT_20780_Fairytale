@@ -56,7 +56,7 @@ pinMode(LedPin, OUTPUT);
   Calcifer.attach(CalciferPin);
   pinMode(CalciferPin,INPUT);
   Serial.begin(9600);
-  Serial.println("Start Part A")
+  Serial.println("Start Part A");
 }
 
 void loop() {
