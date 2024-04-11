@@ -8,11 +8,13 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
+
 int LedPin =5;
+
 
 //Button A activates LED behind door for Howl
 
-const int buttonAPin=1;
+const int buttonAPin=1; //chalk
 int buttonAState=0;
 int lastButtonAState=0;
 bool A=false;
@@ -57,7 +59,7 @@ pinMode(LedPin, OUTPUT);
   Calcifer.attach(CalciferPin);
   pinMode(CalciferPin,INPUT);
   Serial.begin(9600);
-  Serial.println("Start Part A")
+  Serial.println("Start Part A");
 }
 
 void loop() {
@@ -146,7 +148,6 @@ lastButtonBState= buttonBState;
 lastButtonCState= buttonCState;
 lastButtonDState= buttonDState;
 }
-
 
 
 
