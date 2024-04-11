@@ -8,7 +8,9 @@ int LWallPin = 9;
 int RWallPin = 8;
 int PaperPin = 7;
 int CalciferPin = 6;
-int LedPin= 5;
+
+int LedPin =5;
+
 
 //Button A activates LED behind door for Howl
 
@@ -37,7 +39,7 @@ bool D=false;
 
 
 
-//ADD IN LED PINS 
+
 
 
 void setup() {
@@ -47,6 +49,7 @@ void setup() {
   pinMode(buttonDPin,INPUT);
   pinMode(buttonEPin,INPUT);
 pinMode(LedPin, OUTPUT);
+     digitalWrite(LedPin, HIGH);
   LWall.attach(LWallPin);
   pinMode(LWallPin,INPUT);
   RWall.attach(RWallPin);
@@ -65,20 +68,21 @@ buttonAState= digitalRead(buttonAPin);
 if (buttonAState != lastButtonAState) { 
   if (buttonAState==HIGH) {  //Chalk is placed, Led behind door activates
     A=true;
-    //CODE FOR LED
-digitalWrite(LedPin, HIGH);
+    digitalWrite(LedPin, LOW);
+  }else{
+    digitalWrite(LedPin, HIGH);
+  }
     Serial.println("Start Part B")
   }
-}
 if (A ==true) { //Howl is placed, activates Cal and paper
 buttonBState= digitalRead(buttonBPin);
 if(buttonBState !=lastButtonBState){
 if (buttonBState==HIGH){
 B=true;
-digitalWrite(LedPin, LOW);
+digitalWrite(LedPin, HIGH);
 //SERVO CODE FOR CALCIFER
 if (digitalRead(CalciferPin)==HIGH){
-Calcifer.write(90); //Calcifer turns bigger
+Calcifer.write(180); //Calcifer turns bigger
 }else{
 Calcifer.write(0);
 }
@@ -91,7 +95,6 @@ Paper.write(0);
 }
 }
 }
-
 if (B ==true) {
 buttonCState= digitalRead(buttonCPin);
 if(buttonCState !=lastButtonCState){
@@ -147,15 +150,4 @@ lastButtonDState= buttonDState;
 }
 
 
-//for some servo coding to implement later
-/*if (digitalRead(LWallPin)==HIGH){
-LWall.write(90);
-}else{
-LWall.write(0);
-}
-if (digitalRead(RWallPin)==HIGH){
-RWall.write(90);
-}else{
-RWall.write(0);
-}
-} */
+
