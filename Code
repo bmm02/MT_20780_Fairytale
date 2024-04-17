@@ -33,7 +33,7 @@ int buttonDState=0;
 int lastButtonDState=0;
 bool D=false;
 
-//Problem: Led starts on, needs to start off, button A being recognized as button B
+
 
 void setup() {
    pinMode(buttonAPin,INPUT);
@@ -41,15 +41,17 @@ void setup() {
      pinMode(buttonCPin,INPUT);
   pinMode(buttonDPin,INPUT);
      pinMode(LedPin, OUTPUT);
-     digitalWrite(LedPin, HIGH);
+     digitalWrite(LedPin, HIGH); //CHANGE THIS?
+
       LWall.attach(LWallPin);
-  pinMode(LWallPin,INPUT);
+  //pinMode(LWallPin,INPUT);
   RWall.attach(RWallPin);
-  pinMode(RWallPin,INPUT);
+  //pinMode(RWallPin,INPUT);
   Paper.attach(PaperPin);
-  pinMode(PaperPin,INPUT);
+  Paper.write(0);
+  //pinMode(PaperPin,INPUT);
  Calcifer.attach(CalciferPin);
-  pinMode(CalciferPin,INPUT);
+  //pinMode(CalciferPin,INPUT);
      Serial.begin(9600);
   Serial.println("Start Part A");
 }
@@ -59,71 +61,70 @@ buttonAState= digitalRead(buttonAPin);
 
 if (buttonAState != lastButtonAState) { 
   if (buttonAState==HIGH) {  //Chalk is placed, Led behind door activates
-    A=true;
-    //CODE FOR LED
-digitalWrite(LedPin, LOW);
+     A=true;
+  //   //CODE FOR LED
+ digitalWrite(LedPin, LOW);
   }else{
-    digitalWrite(LedPin, HIGH);
+     digitalWrite(LedPin, HIGH);
   }
     Serial.println("Start Part B");
   }
-if (A ==true) { //Howl is placed, activates Cal for now
+if (A == true) { //Howl is placed, activates Cal for now
 buttonBState= digitalRead(buttonBPin);
 if(buttonBState !=lastButtonBState){
 if (buttonBState==HIGH){
+Calcifer.write(180); //Calcifer turns bigger
 B=true;
 digitalWrite(LedPin, HIGH);
 //SERVO CODE FOR CALCIFER
-if (digitalRead(CalciferPin)==HIGH){
-Calcifer.write(180); //Calcifer turns bigger
 }else{
 Calcifer.write(0);
-}
-if (digitalRead(PaperPin)==HIGH){
+ }
+ if (digitalRead(buttonBPin)==HIGH){
 Paper.write(90);
 }else{
 Paper.write(0);
-}
+} 
 Serial.println("Start Part C");
   }
 }
 if (B ==true) {
-buttonCState= digitalRead(buttonCPin);
+  buttonCState= digitalRead(buttonCPin);
 if(buttonCState !=lastButtonCState){
 if (buttonCState==HIGH){
-C=true;
-//SERVO CODE FOR RIGHT WALL
-if (digitalRead(RWallPin)==HIGH){
-RWall.write(90);
-}else{
-RWall.write(0);
-}
-Serial.println("Start Part D");
+ RWall.write(90);
+ C=true;
+ }else{
+ RWall.write(0);
+ } 
+ Serial.println("Start Part C");
   }
-}
-  if (C ==true) {
-buttonDState= digitalRead(buttonDPin);
-if(buttonDState !=lastButtonDState){
-if (buttonDState==HIGH){
-D=true;
+ }
+ if (C ==true) {
+ buttonDState= digitalRead(buttonDPin);
+ if(buttonDState !=lastButtonCState){
+ if (buttonDState==HIGH){
+ 
+// //SERVO CODE FOR LEFT WALL
 
-//SERVO CODE FOR LEFT WALL
-if (digitalRead(LWallPin)==HIGH){
-LWall.write(90);
-}else{
-LWall.write(0);
-}
-Serial.println("The End!");
-}
+ LWall.write(90);
+ D=true;
+ }else{
+ LWall.write(0);
+ }
+Serial.println("The End");
+   }
+ }
+
 lastButtonAState= buttonAState;
 lastButtonBState= buttonBState;
 lastButtonCState= buttonCState;
 lastButtonDState= buttonDState;
 }
-}
-}
-}
-}
+
+
+
+//}
 
 
 
